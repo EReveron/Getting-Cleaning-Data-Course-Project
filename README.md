@@ -12,7 +12,7 @@ so lets change the working directory to that (you should change to the correct o
     
 You should have at least the following files
   > dir()
-  [1] "README.md"       "run_analysis.R"  "UCI HAR Dataset"
+  > [1] "README.md"       "run_analysis.R"  "UCI HAR Dataset"
     
 Let's load & run the script, the script is a function that return a data set that have the answer for
 questions 5 (check the run_analysis.R file for more details)
@@ -23,5 +23,5 @@ questions 5 (check the run_analysis.R file for more details)
 When the script finish, you should have a file named 'table.txt' in the working directory with the data set
 
   > dir()
-  [1] "README.md"       "run_analysis.R"  "table.txt"       "UCI HAR Dataset"
+  > [1] "README.md"       "run_analysis.R"  "table.txt"       "UCI HAR Dataset"
     
