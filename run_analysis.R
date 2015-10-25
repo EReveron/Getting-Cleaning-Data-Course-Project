@@ -1,24 +1,24 @@
 ## run_analysis.R
-## Script that have the procedure to cover the Project for Project
+## Script that have the procedure to cover the Project Assigment for "Getting Cleaning Data Course"
 
 
 ## 1. Merges the training and the test sets to create one data set.
 
-## Read "features" table that have the Columns names
+## Read "features" table that have the Columns names, assume that the files are in "UCI HAR Dataset" directory
 
-dt_features <- read.table("./P3/UCI HAR Dataset/features.txt", sep = "", col.names= c("feature_id", "feature_name"))
+dt_features <- read.table("./UCI HAR Dataset/features.txt", sep = "", col.names= c("feature_id", "feature_name"))
 
 
 ## Read the Training Sets
 
 
-dt_training <- read.table("./P3/UCI HAR Dataset/train/X_train.txt", sep = "", col.names = dt_features$feature_name)
+dt_training <- read.table("./UCI HAR Dataset/train/X_train.txt", sep = "", col.names = dt_features$feature_name)
 
 ## Read the Test Sets
 
 ## dt_subject_test <- read.table("./P3/UCI HAR Dataset/test/subject_test.txt", sep = "") 
 
-dt_test <- read.table("./P3/UCI HAR Dataset/test/X_test.txt", sep = "", col.names = dt_features$feature_name)
+dt_test <- read.table("./UCI HAR Dataset/test/X_test.txt", sep = "", col.names = dt_features$feature_name)
 
 
 ## Merge two dt to create one Set, the "training" and "test" have the same information, so use rbind
@@ -40,12 +40,12 @@ dt2 <- dt1[features_mean_standard]
 
 ## Read Activity Labels
 
-dt_activity_label <- read.table("./P3/UCI HAR Dataset/activity_labels.txt", sep = "", col.names= c("activity_id", "activity_name"))
+dt_activity_label <- read.table("./UCI HAR Dataset/activity_labels.txt", sep = "", col.names= c("activity_id", "activity_name"))
 
 ## Read Activity labels for Training & Test Sets
 
-dt_training_activity_label <- read.table("./P3/UCI HAR Dataset/train/y_train.txt", sep = "", col.names=c("activity_id"))
-dt_test_activity_label <- read.table("./P3/UCI HAR Dataset/test/y_test.txt", sep = "", col.names=c("activity_id"))
+dt_training_activity_label <- read.table("./UCI HAR Dataset/train/y_train.txt", sep = "", col.names=c("activity_id"))
+dt_test_activity_label <- read.table("./UCI HAR Dataset/test/y_test.txt", sep = "", col.names=c("activity_id"))
 
 
 ## Merge two Activity Labels Dataset and Merge with Activity Labels to get Descriptive names
@@ -72,8 +72,8 @@ colnames(dt3)[67] <- "activity_name"
 
 ## Read Subject labels for Training & Test Sets
 
-dt_training_subject_label <- read.table("./P3/UCI HAR Dataset/train/subject_train.txt", sep = "", col.names=c("subject_id"))
-dt_test_subject_label <- read.table("./P3/UCI HAR Dataset/test/subject_test.txt", sep = "", col.names=c("subject_id"))
+dt_training_subject_label <- read.table("./UCI HAR Dataset/train/subject_train.txt", sep = "", col.names=c("subject_id"))
+dt_test_subject_label <- read.table("./UCI HAR Dataset/test/subject_test.txt", sep = "", col.names=c("subject_id"))
 
 
 ## Merge the two Activity Labels Dataset and Merge with Activity Labels to get Descriptive names
@@ -86,4 +86,7 @@ dt5 <- cbind(dt3,dt_subject)
 
 ## Create a new Dataset that consider the mean by subject and activity_name
 
-dt5 <- aggregate(dt4,by=list(dt4$subject_id,dt4$activity_name),FUN=mean)
+dt5 <- aggregate(dt5,by=list(dt5$subject_id,dt5$activity_name),FUN=mean)
+
+write.table(dt5,"table.txt",row.name=FALSE)
+
