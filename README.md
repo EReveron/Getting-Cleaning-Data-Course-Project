@@ -19,10 +19,12 @@ Let's load & run the script, the script is a function that return a data set tha
 questions 5 (check the run_analysis.R file for more details)
 
   > source("run_analysis.R")
+  
   > dt <- run_analysis()
 
 When the script finish, you should have a file named 'table.txt' in the working directory with the data set
 
   > dir()
+  
   > [1] "README.md"       "run_analysis.R"  "table.txt"       "UCI HAR Dataset"
     
