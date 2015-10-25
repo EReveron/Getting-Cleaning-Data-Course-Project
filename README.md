@@ -12,6 +12,7 @@ so lets change the working directory to that (you should change to the correct o
     
 You should have at least the following files
   > dir()
+  
   > [1] "README.md"       "run_analysis.R"  "UCI HAR Dataset"
     
 Let's load & run the script, the script is a function that return a data set that have the answer for
