@@ -14,11 +14,11 @@ run_analysis <- function() {
 
 	dt_features <- read.table("./UCI HAR Dataset/features.txt", sep = "", col.names= c("feature_id", "feature_name"))
 
-	## Read the Training Sets
+	## Read the Training Sets add the feature names already in 'dt_features'
 
 	dt_training <- read.table("./UCI HAR Dataset/train/X_train.txt", sep = "", col.names = dt_features$feature_name)
 
-	## Read the Test Sets
+	## Read the Test Sets add the feature names already in 'dt_features'
 
 	## dt_subject_test <- read.table("./P3/UCI HAR Dataset/test/subject_test.txt", sep = "") 
 
@@ -67,8 +67,11 @@ run_analysis <- function() {
 
 ## 4. Appropriately labels the data set with descriptive variable names. 
 
-	## The dataset already have the descriptive variable names, at the beginning was read and feature names was assigned. Check step 1
+	## Remove the consecutive ".." for only one "." in order to be more readable. The data set already was created with the corresponding 
+	## variable names (check item 1)
 
+	setnames(dt3,names(dt3), gsub("[.]+", ".", names(dt3), perl=TRUE))
+	
 
 ## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
