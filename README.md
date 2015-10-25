@@ -28,3 +28,4 @@ When the script finish, you should have a file named 'table.txt' in the working 
   
   > [1] "README.md"       "run_analysis.R"  "table.txt"       "UCI HAR Dataset"
     
+ 
