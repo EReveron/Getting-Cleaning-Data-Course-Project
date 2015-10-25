@@ -1,4 +1,4 @@
-run_analysis <- function() {
+run_analysis <- function() { 
 
 	## run_analysis.R 
 	## Script that have the procedure to cover the Project Assigment for "Getting Cleaning Data Course"

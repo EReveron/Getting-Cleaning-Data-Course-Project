@@ -1,4 +1,4 @@
-# Getting-Cleaning-Data-Course-Project
+# Getting-Cleaning-Data-Course-Project 
 This repo contains the information related with the Project assigment for the Getting Cleaning Data Course
 
 In order to redo this work you should copy the following files to the same working directory:
