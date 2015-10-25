@@ -4,15 +4,16 @@ run_analysis <- function() {
 	## Script that have the procedure to cover the Project Assigment for "Getting Cleaning Data Course"
 	## This script assume that the working directory have a folder named 'UCI HAR Dataset' where is located the data
 
+	require(reshape2)
+	require(data.table)
+
 ## 1. Merges the training and the test sets to create one data set.
 
 	## Read "features" table that have the Columns names, assume that the files are in "UCI HAR Dataset" directory
 
 	dt_features <- read.table("./UCI HAR Dataset/features.txt", sep = "", col.names= c("feature_id", "feature_name"))
 
-
 	## Read the Training Sets
-
 
 	dt_training <- read.table("./UCI HAR Dataset/train/X_train.txt", sep = "", col.names = dt_features$feature_name)
 
@@ -88,8 +89,12 @@ run_analysis <- function() {
 
 	## Create a new Dataset that consider the mean by subject and activity_name
 
-	dt5 <- aggregate(dt5,by=list(dt5$subject_id,dt5$activity_name),FUN=mean)
+	dt5<-melt(dt5,var.ids=c("subject_id","activity_name"),measure.vars=c(3:68))
 
+	dt5<-dcast(dt5, subject_id+activity_name~variable,fun.aggregate=mean, na.rm=TRUE)
+
+	## Write the Data set table and return the data set
+	
 	write.table(dt5,"table.txt",row.name=FALSE)
 
 	dt5
