@@ -4,6 +4,7 @@ run_analysis <- function() {
 	## Script that have the procedure to cover the Project Assigment for "Getting Cleaning Data Course"
 	## This script assume that the working directory have a folder named 'UCI HAR Dataset' where is located the data
 
+	## Is neccesary to load those libraries
 	require(reshape2)
 	require(data.table)
 
